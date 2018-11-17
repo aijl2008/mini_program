@@ -1,5 +1,5 @@
 <?php
-
+//print_r($_SERVER);print_r($_POST);exit();
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
