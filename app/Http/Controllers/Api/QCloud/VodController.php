@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Qcloud;
+namespace App\Http\Controllers\Api\QCloud;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

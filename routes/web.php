@@ -1,22 +1,42 @@
 <?php
+/**
+ * 登录与注册
+ */
+Route::group(
+    [
+        //'middleware' => 'mock.user'
+    ],
+    function () {
+        Route::middleware('wechat.oauth:snsapi_userinfo')
+            ->group(function () {
+                Route::get('/login', 'SelfAuthController@autoLogin')->name('login');
+            }
+            );
+        Route::middleware('wechat.oauth:snsapi_userinfo')
+            ->group(function () {
+                Route::get('/register', 'SelfAuthController@autoRegister')->name('register');
+            }
+            );
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(
+    [
+        //'middleware' => 'auth'
+    ],
+    function () {
+        /**
+         * 首页，仅测试
+         */
+        Route::get('/', function () {
+            return redirect("videos");
+        });
+        /**
+         * 视频列表
+         */
+        Route::resource("videos", "VideoController");
+    });
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get("user/upload","User\UploadController@create");
-
-Route::get("api/qcloud/vod/signature","Api\QCloud\VodController@signature");
-
-Route::resource("user/video","User\VideoController");
+/**
+ * 公众号消息接口
+ */
+Route::any('/wechat', 'WeChatController@serve');
