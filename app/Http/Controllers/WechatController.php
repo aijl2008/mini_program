@@ -4,82 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Wechat;
 use Illuminate\Http\Request;
+use Log;
 
-class WechatController extends Controller
+class WeChatController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 处理微信的请求消息
      *
-     * @return \Illuminate\Http\Response
+     * @return string
      */
-    public function index()
+    public function serve()
     {
-        //
-    }
+        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $app = app('wechat.official_account');
+        $app->server->push(function($message){
+            return "欢迎关注 overtrue！";
+        });
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Wechat  $wechat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Wechat $wechat)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Wechat  $wechat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Wechat $wechat)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Wechat  $wechat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Wechat $wechat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Wechat  $wechat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Wechat $wechat)
-    {
-        //
+        return $app->server->serve();
     }
 }
