@@ -33,10 +33,15 @@ Route::group(
         /**
          * 视频列表
          */
-        Route::resource("videos", "VideoController");
+        Route::resource("videos", "My\VideoController");
+        Route::resource('followed', 'My\FollowController');
+        Route::resource('liked', 'My\LikeController');
+        Route::resource('profile', 'My\ProfileController');
+
+        Route::Get('statistics', 'My\StatisticsController')->name('statistics.show');
     });
 
 /**
  * 公众号消息接口
  */
-Route::any('/wechat', 'WeChatController@serve');
+Route::any('/wechat', 'WeChatController@serve')->name('wechat.serve');

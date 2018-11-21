@@ -1,19 +1,28 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: artron
+ * Date: 2018/11/19
+ * Time: 20:37
+ */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\My;
 
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use App\Models\Video;
 
 class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @param $video
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Video $video)
     {
-
+        return view('my.video.index')->with('rows',$video->get());
     }
 
     /**
@@ -21,9 +30,8 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    function create(){
+        return view('my.video.create');
     }
 
     /**

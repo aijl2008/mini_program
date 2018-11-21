@@ -52,7 +52,6 @@
 <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- <script src="//imgcache.qq.com/open/qcloud/js/vod/crypto.js"></script> -->
 <script src="//imgcache.qq.com/open/qcloud/js/vod/sdk/ugcUploader.js"></script>
-<!-- <script src="//video.qcloud.com/signature/lib/ugcUploader.js"></script> -->
 <script type="text/javascript">
 
 
@@ -63,7 +62,7 @@
      **/
     var getSignature = function(callback){
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/qcloud/vod/signature',
+            url: '{{route("api.qcloud.signature.vod")}}',
             type: 'GET',
             dataType: 'json',
             success: function(res){
@@ -126,6 +125,25 @@
                 } else if (result.type == 'cover') {
                     $('[name=coverresult'+num+']').text('上传成功');
                 }
+                $.ajax({
+                    url: '{{route("api.videos.store")}}',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(res){
+                        if(res.code && res.code == 0) {
+                            alert("上传成功");
+                            window.location.href = "{{route('videos.index')}}";
+                        } else {
+                            if (res.msg){
+                                alert("上传失败"+res.msg);
+                            }
+                            else{
+                                alert("上传失败");
+                            }
+                        }
+
+                    }
+                });
             },
             error: function(result){
                 if(result.type == 'video') {

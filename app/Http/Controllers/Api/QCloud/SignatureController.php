@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Api\QCloud;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VodController extends Controller
+class SignatureController extends Controller
 {
     function signature()
     {
@@ -18,7 +17,7 @@ class VodController extends Controller
         ];
     }
 
-    function getSignature()
+    function vod()
     {
         $secret_id = "AKIDQkCVchFLyUt9HDFXyJVaYegWAdx6FoNz";
         $secret_key = "Op7MVbXIrFTt13wdAWgehTBJI5iGk3A5";

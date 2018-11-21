@@ -19,27 +19,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(
     [
-        'middleware' => 'auth',
-        'namespace' => 'Api',
+        //'middleware' => 'auth',
         'prefix' => '',
+        'namespace' => 'Api',
         'as' => 'api.'
     ],
     function () {
 
-        Route::get("qcloud/signature/vod", "Api\QCloud\SignatureController@Vod");
-        Route::get("wechat/signature/share", "Api\WeChat\SignatureController@share");
+        Route::get("qcloud/signature/vod", "QCloud\SignatureController@Vod")->name('qcloud.signature.vod');
+        Route::get("wechat/signature/share", "WeChat\SignatureController@share")->name('wechat.signature.share');
 
         Route::resource('videos', 'VideoController');
-        Route::POST('videos/{video_id}/like', 'VideoController@like');
-        Route::DELETE('videos/{video_id}/like', 'VideoController@unlike');
-        Route::POST('users/{user_id}/follow', 'UserController@like');
-        Route::DELETE('users/{user_id}/follow', 'UserController@unlike');
+        Route::resource('my/videos', 'My\VideoController');
+        Route::POST('videos/{video_id}/like', 'VideoController@like')->name('videos.like.store');
+        Route::DELETE('videos/{video_id}/like', 'VideoController@unlike')->name('videos.like.destroy');
+        Route::POST('users/{user_id}/follow', 'UserController@like')->name('users.follow.store');
+        Route::DELETE('users/{user_id}/follow', 'UserController@unlike')->name('users.follow.destroy');
 
-        Route::resource('followed', 'My/FollowController');
-        Route::resource('liked', 'My/LikeController');
-        Route::resource('profile', 'My/ProfileController');
+        Route::resource('followed', 'My\FollowController');
+        Route::resource('liked', 'My\LikeController');
+        Route::resource('profile', 'My\ProfileController');
 
-        //Route::Get('statistics', 'StatisticsController');
+        Route::Get('statistics', 'My\StatisticsController')->name('users.statistics.show');
 
     }
 );
