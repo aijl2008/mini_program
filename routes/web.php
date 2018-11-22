@@ -22,23 +22,26 @@ Route::group(
 Route::group(
     [
         //'middleware' => 'auth'
+        'prefix' => 'my',
+        "namespace" => "My",
+        'as' => 'my.'
     ],
     function () {
         /**
          * 首页，仅测试
          */
         Route::get('/', function () {
-            return redirect("videos");
+            return redirect("my/videos");
         });
         /**
          * 视频列表
          */
-        Route::resource("videos", "My\VideoController");
-        Route::resource('followed', 'My\FollowController');
-        Route::resource('liked', 'My\LikeController');
-        Route::resource('profile', 'My\ProfileController');
+        Route::resource("videos", "VideoController");
+        Route::resource('followed', 'FollowController');
+        Route::resource('liked', 'LikeController');
+        Route::resource('profile', 'ProfileController');
 
-        Route::Get('statistics', 'My\StatisticsController')->name('statistics.show');
+        Route::Get('statistics', 'StatisticsController')->name('statistics.show');
     });
 
 /**

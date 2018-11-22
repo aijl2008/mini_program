@@ -22,7 +22,7 @@ class VideoController extends Controller
      */
     public function index(Video $video)
     {
-        return view('my.video.index')->with('rows',$video->get());
+        return view('my.videos.index')->with('rows',$video->get());
     }
 
     /**
@@ -31,7 +31,7 @@ class VideoController extends Controller
      * @return \Illuminate\Http\Response
      */
     function create(){
-        return view('my.video.create');
+        return view('my.videos.create');
     }
 
     /**
@@ -48,12 +48,12 @@ class VideoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param Video $video
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Video $video)
     {
-        return view("user.video.show");
+        return view("my.videos.show")->with('row',$video);
     }
 
     /**

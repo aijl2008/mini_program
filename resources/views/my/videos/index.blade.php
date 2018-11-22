@@ -1,24 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8"><a href="{{route('videos.create')}}">new</a>
-                <table>
-                    <tr>
+    <div id="page-content" class="index-page">
+        <div class="container">
+            <div class="row">
+                <div class="featured">
+                    <div class="main-vid">
                         @foreach($rows as $row)
-                            <td>
-                                <h3>{{$row->title}}<small>
-                                        <span>{{$row->click_number}}</span>
-                                        <span>{{$row->liked_number}}</span>
-                                    </small></h3>
-                                <video src="{{$row->url}}"></video>
-                            </td>
+                        <div class="col-md-6">
+                            <div class="zoom-container">
+                                <div class="zoom-caption">
+                                    <span>click_number{{$row->click_number}}</span>
+                                    <a href="{{ route("my.videos.show", $row->id) }}">
+                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                    </a>
+                                    <p>{{$row->title}}</p>
+                                </div>
+                                <img src="/images/1.jpg"/>
+                            </div>
+                        </div>
                         @endforeach
-                    </tr>
-                </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
