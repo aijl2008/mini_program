@@ -30,15 +30,18 @@ Route::group(
         Route::get("wechat/signature/share", "WeChat\SignatureController@share")->name('wechat.signature.share');
 
         Route::resource('videos', 'VideoController');
-        Route::resource('my/videos', 'My\VideoController');
-        Route::POST('videos/{video_id}/like', 'VideoController@like')->name('videos.like.store');
-        Route::DELETE('videos/{video_id}/like', 'VideoController@unlike')->name('videos.like.destroy');
-        Route::POST('users/{user_id}/follow', 'UserController@like')->name('users.follow.store');
-        Route::DELETE('users/{user_id}/follow', 'UserController@unlike')->name('users.follow.destroy');
+        Route::resource('users', 'UserController');
 
-        Route::resource('followed', 'My\FollowController');
-        Route::resource('liked', 'My\LikeController');
-        Route::resource('profile', 'My\ProfileController');
+
+        Route::resource('my/videos', 'My\VideoController');
+        Route::POST('my/videos/{video_id}/like', 'VideoController@like')->name('videos.like.store');
+        Route::DELETE('my/videos/{video_id}/like', 'VideoController@unlike')->name('videos.like.destroy');
+        Route::POST('my/users/{user_id}/follow', 'UserController@like')->name('users.follow.store');
+        Route::DELETE('my/users/{user_id}/follow', 'UserController@unlike')->name('users.follow.destroy');
+
+        Route::resource('my/followed', 'My\FollowController');
+        Route::resource('my/liked', 'My\LikeController');
+        Route::resource('my/profile', 'My\ProfileController');
 
         Route::Get('statistics', 'My\StatisticsController')->name('users.statistics.show');
 

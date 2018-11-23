@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Helper;
 use Illuminate\Foundation\Http\FormRequest;
 
-class VideoRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,18 +24,17 @@ class VideoRequest extends FormRequest
     public function rules()
     {
         return [
-            "title:required",
-            "url" => "required|unique:videos",
+            "id" => "required|unique:users",
+            "name" => "required",
+            "avatar" => "url"
         ];
     }
-
 
     public function messages()
     {
         return [
-            "title.required" => "视频名称必须提供",
-            "url.required" => "视频地址必须提供",
-            "url.unique" => "该视频已经存在了"
+            "id.unique" => "用户{$this->input('id')}已经存在了",
+            "avatar.url" => "用户头像的格式无效"
         ];
     }
 
@@ -44,16 +42,11 @@ class VideoRequest extends FormRequest
     {
         $data = [];
         foreach ([
-                     "user_id" => "int",
-                     "title" => "string",
-                     "url" => "string",
-                     "uploaded_at" => "int",
-                     "played_number" => "int",
-                     "liked_number" => "int",
-                     "shared_wechat_number" => "int",
-                     "shared_moment_number" => "int",
-                     "visibility" => "int",
-                     "status" => "int"
+                     "id" => "string",
+                     "name" => "string",
+                     "mobile" => "string",
+                     "email" => "string",
+                     "avatar" => "string",
                  ] as $field => $type) {
             $value = $this->input($field);
             if (is_null($value)) {
@@ -76,21 +69,7 @@ class VideoRequest extends FormRequest
                 }
             }, $value, $type);
         }
-
-        foreach ([
-                     "user_id" => Helper::uid(),
-                     "uploaded_at" => date("Y-m-d H:i:s"),
-                     "played_number" => 0,
-                     "liked_number" =>0,
-                     "shared_wechat_number" => 0,
-                     "shared_moment_number" => 0,
-                     "visibility" => 1,
-                     "status" => 1
-                 ] as $field => $value) {
-            if (!key_exists($field, $data)) {
-                $data[$field] = $value;
-            }
-        }
+        $data["password"] = "不支持密码登录";
         return $data;
     }
 }

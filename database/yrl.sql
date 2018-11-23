@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.24, for Win64 (x86_64)
 --
--- Host: 132.232.249.101    Database: homestead
+-- Host: localhost    Database: yrl
 -- ------------------------------------------------------
 -- Server version	5.7.24
 
@@ -43,28 +43,30 @@ LOCK TABLES `failed_jobs` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `follow`
+-- Table structure for table `followed_user`
 --
 
-DROP TABLE IF EXISTS `follow`;
+DROP TABLE IF EXISTS `followed_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `follow` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `followed_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` char(29) COLLATE utf8mb4_bin NOT NULL,
   `followed_id` char(29) COLLATE utf8mb4_bin NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `follow`
+-- Dumping data for table `followed_user`
 --
 
-LOCK TABLES `follow` WRITE;
-/*!40000 ALTER TABLE `follow` DISABLE KEYS */;
-/*!40000 ALTER TABLE `follow` ENABLE KEYS */;
+LOCK TABLES `followed_user` WRITE;
+/*!40000 ALTER TABLE `followed_user` DISABLE KEYS */;
+INSERT INTO `followed_user` VALUES (1,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa','ccccccccccccccccccccccccccccc','2018-11-23 14:11:59','2018-11-23 14:11:59'),(3,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa','bbbbbbbbbbbbbbbbbbbbbbbbbbbb','2018-11-23 14:33:18','2018-11-23 14:33:18');
+/*!40000 ALTER TABLE `followed_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -294,12 +296,13 @@ DROP TABLE IF EXISTS `user_video`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_video` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` char(29) COLLATE utf8mb4_bin NOT NULL,
   `video_id` int(11) NOT NULL,
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,6 +311,7 @@ CREATE TABLE `user_video` (
 
 LOCK TABLES `user_video` WRITE;
 /*!40000 ALTER TABLE `user_video` DISABLE KEYS */;
+INSERT INTO `user_video` VALUES (1,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2,'2018-11-23 12:40:36','2018-11-23 12:40:36'),(2,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2,'2018-11-23 12:41:03','2018-11-23 12:41:03'),(3,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',21,'2018-11-23 12:41:08','2018-11-23 12:41:08'),(4,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1,'2018-11-23 12:41:15','2018-11-23 12:41:15'),(5,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',7,'2018-11-23 13:55:49','2018-11-23 13:55:49'),(6,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',7,'2018-11-23 13:57:07','2018-11-23 13:57:07'),(8,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',5,'2018-11-23 14:36:59','2018-11-23 14:36:59');
 /*!40000 ALTER TABLE `user_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,6 +342,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('0','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 04:19:57','2018-11-23 04:19:57'),('3','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 06:59:53','2018-11-23 06:59:53'),('4','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 07:00:01','2018-11-23 07:00:01'),('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 04:20:30','2018-11-23 04:20:30'),('bbbbbbbbbbbbbbbbbbbbbbbbbbbb','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 05:20:29','2018-11-23 05:20:29'),('ccccccccccccccccccccccccccccc','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 05:20:40','2018-11-23 05:20:40'),('dddddddddddddddddddddddddddd','Jerry','10000000000','awz@awz.cn','\'\'\'\'\'\'','不支持密码登录',NULL,'2018-11-23 05:20:52','2018-11-23 05:20:52');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,7 +368,7 @@ CREATE TABLE `videos` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,79 +377,8 @@ CREATE TABLE `videos` (
 
 LOCK TABLES `videos` WRITE;
 /*!40000 ALTER TABLE `videos` DISABLE KEYS */;
+INSERT INTO `videos` VALUES (1,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096757','2018-11-22 12:11:58','1',0,0,0,0,1,1,'2018-11-22 12:11:58','2018-11-22 12:11:58'),(2,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096757','2018-11-22 12:12:11','1',0,0,0,0,1,1,'2018-11-22 12:12:11','2018-11-22 12:12:11'),(3,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096757','2018-11-22 12:12:13','1',0,0,0,0,1,1,'2018-11-22 12:12:13','2018-11-22 12:12:13'),(4,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096757','2018-11-22 12:12:15','1',0,0,0,0,1,1,'2018-11-22 12:12:15','2018-11-22 12:12:15'),(5,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096757','2018-11-22 12:12:17','1',0,0,0,0,1,1,'2018-11-22 12:12:17','2018-11-22 12:12:17'),(6,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096758','2018-11-23 11:51:42','1',0,0,0,0,1,1,'2018-11-23 11:51:42','2018-11-23 11:51:42'),(7,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096759','2018-11-23 11:51:49','1',0,0,0,0,1,1,'2018-11-23 11:51:49','2018-11-23 11:51:49'),(8,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096760','2018-11-23 11:51:56','1',0,0,0,0,1,1,'2018-11-23 11:51:56','2018-11-23 11:51:56'),(9,'The HongKong-Zhuhai-Macao Bridge is open!','5285890783150096760','2018-11-23 14:53:55','aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',0,0,0,0,1,1,'2018-11-23 14:53:55','2018-11-23 14:53:55');
 /*!40000 ALTER TABLE `videos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `watched`
---
-
-DROP TABLE IF EXISTS `watched`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `watched` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `watched`
---
-
-LOCK TABLES `watched` WRITE;
-/*!40000 ALTER TABLE `watched` DISABLE KEYS */;
-/*!40000 ALTER TABLE `watched` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `watching`
---
-
-DROP TABLE IF EXISTS `watching`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `watching` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `watching`
---
-
-LOCK TABLES `watching` WRITE;
-/*!40000 ALTER TABLE `watching` DISABLE KEYS */;
-/*!40000 ALTER TABLE `watching` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `wechats`
---
-
-DROP TABLE IF EXISTS `wechats`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `wechats` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `wechats`
---
-
-LOCK TABLES `wechats` WRITE;
-/*!40000 ALTER TABLE `wechats` DISABLE KEYS */;
-/*!40000 ALTER TABLE `wechats` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -456,4 +390,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-21 19:59:52
+-- Dump completed on 2018-11-23 23:29:06

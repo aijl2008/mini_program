@@ -12,12 +12,20 @@ namespace App;
 class Helper
 {
     static function uid(){
-        return "1";
+        return "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     }
 
     static function success($data=""){
         return [
             'code' => 0,
+            'data' => $data
+        ];
+    }
+
+    static function error($code,$message,$data=""){
+        return [
+            'code' => $code,
+            'msg'=>$message,
             'data' => $data
         ];
     }
