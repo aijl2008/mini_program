@@ -6,21 +6,10 @@ use App\Http\Controllers\Controller;
 
 class SignatureController extends Controller
 {
-    function signature()
-    {
-        return [
-            "code" => 200,
-            "msg" => "Ok",
-            "data" => [
-                "signature" => $this->getSignature()
-            ]
-        ];
-    }
-
     function vod()
     {
-        $secret_id = "AKIDQkCVchFLyUt9HDFXyJVaYegWAdx6FoNz";
-        $secret_key = "Op7MVbXIrFTt13wdAWgehTBJI5iGk3A5";
+        $secret_id = config('vod.secret_id');
+        $secret_key = config('vod.secret_key');
 
         /**
          * 确定签名的当前时间和失效时间
@@ -44,7 +33,13 @@ class SignatureController extends Controller
         $original = http_build_query($arg_list);
         $signature = base64_encode(hash_hmac('SHA1', $original, $secret_key, true) . $original);
 
-        return $signature.PHP_EOL;
-        //return "BygpEoZ9zZWNyZXRJZD1BS0lEbVc1VVFSYUF6bVJ2Slpzcm5vMTRCUnBBUVZlMUlvOVYmY3VycmVudFRpbWVTdGFtcD0xNTQyNDY0MjU2JmV4cGlyZVRpbWU9MTU0MjU1MDY1NiZwcm9jZWR1cmU9WElBT1pISUJPLURFRkFVTFQmcmFuZG9tPTE3MjkzODA4MzQ=";
+        return [
+            "code" => 200,
+            "msg" => "Ok",
+            "data" => [
+                "signature" => $signature
+            ]
+        ];
+
     }
 }

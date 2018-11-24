@@ -20,9 +20,9 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Video $video)
+    public function index()
     {
-        return view('my.videos.index')->with('rows',$video->get());
+        return view('my.videos.index');
     }
 
     /**

@@ -11,7 +11,10 @@ namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
 
-class LikeController extends  Controller
+class LikeController extends Controller
 {
-
+    public function index()
+    {
+        return view('my.liked.index');
+    }
 }

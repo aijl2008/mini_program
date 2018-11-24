@@ -33,7 +33,7 @@
         function ls(page = 1) {
             $.ajax(
                 {
-                    url: '/api/my/videos?page=' + page,
+                    url: '/api/my/liked?page=' + page,
                     type: "get",
                     dataType: "json",
                     success: function (res) {

@@ -39,7 +39,11 @@ Route::group(
         Route::resource("videos", "VideoController");
         Route::resource('followed', 'FollowController');
         Route::resource('liked', 'LikeController');
+
+        Route::post('profile/upload', 'ProfileController@upload');
         Route::resource('profile', 'ProfileController');
+
+
 
         Route::Get('statistics', 'StatisticsController')->name('statistics.show');
     });

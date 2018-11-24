@@ -45,7 +45,7 @@ class VideoRequest extends FormRequest
         $data = [];
         foreach ([
                      "user_id" => "int",
-                     "title" => "string",
+                     "title" => "string","cover_url" => "string","file_id" => "string",
                      "url" => "string",
                      "uploaded_at" => "int",
                      "played_number" => "int",
