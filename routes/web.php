@@ -1,38 +1,52 @@
 <?php
 /**
- * 登录与注册
+ * 首页
+ */
+Route::get("/", "IndexController@index");
+Route::get("/vue", "VueController@index");
+
+
+/**
+ * 框架自带的用户模块
+ */
+Auth::routes();
+
+/**
+ * 覆盖框架自带的用户模块
  */
 Route::group(
     [
         //'middleware' => 'mock.user'
+        //'middleware' => 'proxy.user'
     ],
     function () {
-        Route::middleware('wechat.oauth:snsapi_userinfo')
-            ->group(function () {
-                Route::get('/login', 'SelfAuthController@autoLogin')->name('login');
-            }
-            );
-        Route::middleware('wechat.oauth:snsapi_userinfo')
-            ->group(function () {
-                Route::get('/register', 'SelfAuthController@autoRegister')->name('register');
-            }
-            );
-    });
+        Route::get('/login', 'WeChatAuthController@login')
+            //->middleware('wechat.oauth:snsapi_userinfo')
+            ->name('login');
+        Route::get('/wechat/callback', 'WeChatAuthController@callback')
+            //->middleware('wechat.oauth:snsapi_userinfo')
+            ->name('wechat.callback');
+        Route::get('/register', 'WeChatController@register')
+            //->middleware('wechat.oauth:snsapi_userinfo')
+            ->name('register');
+    }
+);
 
+/**
+ * "我的"页面组
+ */
 Route::group(
     [
-        //'middleware' => 'auth'
+        'middleware' => 'auth',
         'prefix' => 'my',
         "namespace" => "My",
         'as' => 'my.'
     ],
     function () {
         /**
-         * 首页，仅测试
+         * 首页
          */
-        Route::get('/', function () {
-            return redirect("my/videos");
-        });
+        Route::get("/", "VideoController@index");
         /**
          * 视频列表
          */
@@ -42,7 +56,6 @@ Route::group(
 
         Route::post('profile/upload', 'ProfileController@upload');
         Route::resource('profile', 'ProfileController');
-
 
 
         Route::Get('statistics', 'StatisticsController')->name('statistics.show');

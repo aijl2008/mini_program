@@ -13,18 +13,29 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(
+    [
+        'prefix' => '',
+        'namespace' => 'Api',
+        'as' => 'api.'
+    ], function () {
+    Route::post('login', 'UserController@login')->name('login');
+    Route::post('register', 'UserController@store')->name('register');
 });
+
 
 Route::group(
     [
-        //'middleware' => 'auth',
+        'middleware' => 'auth:api',
         'prefix' => '',
         'namespace' => 'Api',
         'as' => 'api.'
     ],
     function () {
+
+        Route::get('/user', function (Request $request) {
+            return $request->user();
+        });
 
         Route::get("qcloud/signature/vod", "QCloud\SignatureController@Vod")->name('qcloud.signature.vod');
         Route::get("wechat/signature/share", "WeChat\SignatureController@share")->name('wechat.signature.share');
@@ -34,12 +45,11 @@ Route::group(
 
         Route::group(
             [
-                //'middleware' => 'auth',
                 'prefix' => 'my',
                 'namespace' => 'My',
                 'as' => 'my.'
             ],
-            function (){
+            function () {
 
                 Route::resource("videos", "VideoController");
                 Route::resource('followed', 'FollowController');
@@ -48,7 +58,6 @@ Route::group(
                 Route::patch('profile', 'ProfileController@update')->name('profile.update');
             }
         );
-
 
 
         Route::Get('statistics', 'My\StatisticsController')->name('users.statistics.show');

@@ -36,6 +36,11 @@
                     url: '/api/my/videos?page=' + page,
                     type: "get",
                     dataType: "json",
+                    beforeSend: function(xhr) {
+                        if (localStorage.token) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+                        }
+                    },
                     success: function (res) {
                         var videos = new Array();
                         $.each(res.data.data, function (idx, item) {

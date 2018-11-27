@@ -43,21 +43,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group hidden">
                             <label class="col-sm-2 control-label">video</label>
                             <div class="col-sm-10">
                                 <input type="file" name="video" id="video" class="form-control">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group hidden">
                             <label class="col-sm-2 control-label">URL</label>
                             <div class="col-sm-10">
                                 <input type="text" name="url" id="url" class="form-control">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group hidden">
                             <label class="col-sm-2 control-label">file_id</label>
                             <div class="col-sm-10">
                                 <input type="text" name="file_id" id="file_id" class="form-control">

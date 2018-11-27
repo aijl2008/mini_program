@@ -14328,11 +14328,14 @@ window.Vue = __webpack_require__(39);
 
 Vue.component('example-component', __webpack_require__(42));
 
-// const files = require.context('./', true, /\.vue$/i)
+Vue.component('passport-clients', __webpack_require__(45));
 
-// files.keys().map(key => {
-//     return Vue.component(_.last(key.split('/')).split('.')[0], files(key))
-// })
+Vue.component('passport-authorized-clients', __webpack_require__(51));
+
+Vue.component('passport-personal-access-tokens', __webpack_require__(56));
+
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14340,11 +14343,6 @@ Vue.component('example-component', __webpack_require__(42));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('passport-clients', __webpack_require__(45));
-
-Vue.component('passport-authorized-clients', __webpack_require__(51));
-
-Vue.component('passport-personal-access-tokens', __webpack_require__(56));
 var app = new Vue({
     el: '#app'
 });
@@ -47801,7 +47799,7 @@ var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("3f9d2562", content, false, {});
+var update = __webpack_require__(5)("530a5802", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -48850,7 +48848,7 @@ var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("7090b06d", content, false, {});
+var update = __webpack_require__(5)("ccd1c9e6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49170,7 +49168,7 @@ var content = __webpack_require__(58);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("4944c501", content, false, {});
+var update = __webpack_require__(5)("6af6d661", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

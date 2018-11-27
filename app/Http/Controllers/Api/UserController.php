@@ -28,10 +28,25 @@ class UserController extends Controller
      * @param UserRequest $request
      * @return array
      */
-    function store(UserRequest $request){
+    function store(UserRequest $request)
+    {
         $user = new User($request->all());
         $user->save();
-        return Helper::success($user->toArray());
+        $token = $user->createToken('TutsForWeb')->accessToken;
+        return Helper::success($token);
+    }
+
+    public function login(Request $request)
+    {
+        $id = $request->id;
+        $user = User::query()->find($id);
+
+        if ($user) {
+            $token = $user->createToken('TutsForWeb')->accessToken;
+            return Helper::success($token);
+        } else {
+            return Helper::error(401,"授权失败");
+        }
     }
 
 }

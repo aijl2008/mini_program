@@ -25,21 +25,21 @@
 <body>
 
 <header>
-
     <nav id="top">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <strong>乡土味视频</strong>
                 </div>
-                <div class="col-md-6 col-sm-6">
-                    <ul class="list-inline top-link link">
-                        <li><a href="/my"><i class="fa fa-home"></i> 首页</a></li>
-                        <li><a href="/my/profile"><i class="fa fa-comments"></i> 个人中心</a></li>
-                        <img alt="{{$user->name}}" style="width: 32px" src="{{$user->avatar}}">
-                    </ul>
-
-                </div>
+                @if ($user)
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="list-inline top-link link">
+                            <li><a href="/my"><i class="fa fa-home"></i> 首页</a></li>
+                            <li><a href="/my/profile"><i class="fa fa-comments"></i> 个人中心</a></li>
+                            <img alt="{{$user->name}}" style="width: 32px" src="{{$user->avatar}}">
+                        </ul>
+                        @endif
+                    </div>
             </div>
         </div>
     </nav>

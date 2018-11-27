@@ -3,31 +3,39 @@
 namespace App\Models;
 
 use App\FollowModel;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
-class User extends Model
+class User extends Authenticatable
 {
-    protected $casts = [
-        "id" => "string"
-    ];
+    use HasApiTokens;
+
     protected $fillable = [
-        "id" ,
         "name",
-        "mobile",
+        "nickname",
+        "open_id",
+        "union_id",
         "email",
         "avatar",
         "password"
     ];
 
-    function liked(){
-        return $this->belongsToMany (Video::class)->withTimestamps();
+    protected $hidden = [
+        'password'
+    ];
+
+    function liked()
+    {
+        return $this->belongsToMany(Video::class)->withTimestamps();
     }
 
-    function followed(){
+    function followed()
+    {
         return $this->belongsToMany(Followed::class)->withTimestamps();
     }
 
-    function video(){
-        return $this->hasMany(Video::class,'user_id');
+    function video()
+    {
+        return $this->hasMany(Video::class, 'user_id');
     }
 }
