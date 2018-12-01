@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '我的视频')
 
 @section('content')
     <div id="page-content" class="index-page">
@@ -36,10 +37,8 @@
                     url: '/api/my/videos?page=' + page,
                     type: "get",
                     dataType: "json",
-                    beforeSend: function(xhr) {
-                        if (localStorage.token) {
-                            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
-                        }
+                    beforeSend: function (xhr) {
+
                     },
                     success: function (res) {
                         var videos = new Array();

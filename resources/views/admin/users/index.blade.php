@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', '全部用户')
 @section('content')
     <div id="page-content" class="index-page">
         <div class="container">

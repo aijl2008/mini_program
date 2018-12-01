@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'wechat',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -44,6 +44,11 @@ return [
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
+        ],
+
+        'wechat' => [
+            'driver' => 'session',
+            'provider' => 'wechat',
         ],
     ],
 
@@ -67,7 +72,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
+        ],
+
+        'wechat' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\WeChat::class,
         ],
 
         // 'users' => [

@@ -6,7 +6,7 @@
  * Time: 20:37
  */
 
-namespace App\Http\Controllers\My;
+namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
@@ -22,7 +22,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('my.videos.index');
+        return view('admin.videos.index')->with('rows', Video::query()->paginate());
     }
 
     /**
@@ -30,7 +30,8 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function create(){
+    function create()
+    {
         return view('my.videos.create');
     }
 
@@ -53,7 +54,7 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        return view("my.videos.show")->with('row',$video);
+        return view("my.videos.show")->with('row', $video);
     }
 
     /**
