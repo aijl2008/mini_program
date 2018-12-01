@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Wechat;
+use App\Models\WeChat;
 use Illuminate\Http\Request;
 use Log;
 
