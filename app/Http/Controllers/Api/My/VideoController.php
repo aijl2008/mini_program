@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Api\My;
 
 use App\Helper;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\VideoRequest;
 use App\Models\Video;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class VideoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @param Request $request
      * @return array
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Helper::success( Video::query()
-            ->where('user_id', Helper::uid())
+        return Helper::success(Video::query()
+            ->where('user_id', $request->user()->id)
             ->orderBy('id', 'desc')
             ->paginate(20));
     }
@@ -48,7 +48,7 @@ class VideoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param Video $video
      * @return array
      */

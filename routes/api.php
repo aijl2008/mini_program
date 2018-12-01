@@ -24,6 +24,8 @@ Route::group(
 });
 
 
+Route::any('mini_program/token', 'Api\MiniProgramController@token')->name('api.mini_program.token');
+
 Route::group(
     [
         'middleware' => 'auth:api',
