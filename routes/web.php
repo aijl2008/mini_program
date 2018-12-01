@@ -5,11 +5,15 @@
 Route::get("/", "IndexController@index");
 Route::get("/vue", "VueController@index");
 
-
+new Illuminate\Routing\Router();
 /**
  * 框架自带的用户模块
- */
-Auth::routes();
+ */print_r(get_class(\Illuminate\Support\Facades\Auth::routes()));exit();
+Route::group(
+    ['prefix' => 'adm'],
+    Auth::routes()
+);
+
 
 /**
  * 覆盖框架自带的用户模块
