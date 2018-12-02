@@ -72,10 +72,10 @@ Route::group(
         'as' => 'wechat.'
     ],
     function () {
-        Route::get('login', 'WeChatAuthController@showLoginForm')->name('login.show');
-        Route::get('login/redirect', 'WeChatAuthController@redirect')->name('login.redirect');
-        Route::get('login/do', 'WeChatAuthController@callback')->name('login.do');
-        Route::get('logout', 'WeChatAuthController@logout')->name('logout');
+        Route::get('login', 'WechatAuthController@showLoginForm')->name('login.show');
+        Route::get('login/redirect', 'WechatAuthController@redirect')->name('login.redirect');
+        Route::get('login/do', 'WechatAuthController@callback')->name('login.do');
+        Route::get('logout', 'WechatAuthController@logout')->name('logout');
     }
 );
 
@@ -112,4 +112,4 @@ Route::group(
 /**
  * 公众号消息接口
  */
-Route::any('/wechat', 'WeChatServerController@serve')->name('wechat.serve');
+Route::any('/wechat', 'WechatServerController@serve')->name('wechat.serve');

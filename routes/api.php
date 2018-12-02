@@ -42,7 +42,7 @@ Route::group(
         /**
          * 全部用户
          */
-        Route::resource('users', 'WeChatController');
+        Route::resource('users', 'WechatController');
 
         Route::group(
             [
