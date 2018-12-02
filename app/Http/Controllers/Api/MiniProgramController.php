@@ -68,7 +68,7 @@ class MiniProgramController extends Controller
                     return Helper::error(__LINE__, '用户数据校验失败,' . $errCode);
                 }
                 $decoded = json_decode($data);
-                $user->name = $decoded->nickName;
+                $user->nickname = $decoded->nickName;
                 $user->avatar = $decoded->avatarUrl;
                 $user->province = $decoded->province;
                 $user->city = $decoded->city;
