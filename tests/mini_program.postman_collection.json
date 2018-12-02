@@ -28,7 +28,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/users",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -61,7 +61,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/videos",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -94,7 +94,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/classifications",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -130,7 +130,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/videos",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -202,7 +202,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/videos",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -236,7 +236,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/liked",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -269,7 +269,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/followed",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -311,7 +311,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/followed",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -353,7 +353,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/followed/7",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -396,7 +396,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/liked",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -429,7 +429,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/my/liked/5",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -490,7 +490,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/mini_program/token",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
@@ -524,7 +524,7 @@
 					"raw": "https://www.xiangtu.net.cn/api/mini_program/user",
 					"protocol": "https",
 					"host": [
-						"api",
+						"www",
 						"xiangtu",
 						"net",
 						"cn"
