@@ -11,10 +11,9 @@ namespace App\Http\Controllers\Api\My;
 
 use App\Helper;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\Video;
+use App\Models\Wechat;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -23,39 +22,49 @@ class FollowController extends Controller
     function index(Request $request)
     {
         return Helper::success(
-            call_user_func(function (User $user) {
+            call_user_func(function (Authenticatable $user) {
                 if (!$user) {
-                    return new LengthAwarePaginator([],0, 20);
+                    return new LengthAwarePaginator([], 0, 20);
                 }
                 return $user->followed()->with(
                     [
-                        'video' => function(HasMany $query){
-                            return $query->orderBy('id','desc')->take(10);
+                        'video' => function (HasMany $query) {
+                            return $query->orderBy('id', 'desc')->take(10);
                         }
                     ]
                 )->paginate(20);
             },
-                User::query()->find(Helper::uid())
+                $request->user('api')
             )
         );
     }
 
-    function store(Request $request){
-        $user = User::query()->findOrFail(Helper::uid());
-        $followed = User::query()->find($request->input('user_id'));
-        if (!$followed){
-            return Helper::error(-1,"不存在的用户");
+    function store(Request $request)
+    {
+        $user = $request->user('api');
+        $followed = Wechat::query()->find($request->input('wechat_id'));
+        if (!$followed) {
+            return Helper::error(-1, "不存在的用户");
         }
-        if ($user->followed()->where("followed_id",$request->input('user_id'))->count()>0){
-            return Helper::error(-1,"您已经关注过了");
+        if ($user->followed()->where("followed_id", $request->input('wechat_id'))->count() > 0) {
+            return Helper::error(-1, "您已经关注过了");
         }
-        $user->followed()->attach($request->input('user_id'));
-        return Helper::success();
+        $user->followed()->attach($request->input('wechat_id'));
+        return Helper::success(
+            [
+                'followed' => $followed
+            ]
+        );
     }
 
-    function destroy(Request $request, $user_id){
-        $user = User::query()->findOrFail(Helper::uid());
+    function destroy(Request $request, $user_id)
+    {
+        $user = $request->user('api');
         $user->followed()->detach($user_id);
-        return Helper::success();
+        return Helper::success(
+            [
+                'followed' => $user_id
+            ]
+        );
     }
 }

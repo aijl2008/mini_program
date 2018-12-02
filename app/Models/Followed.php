@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Followed extends Model
 {
-    protected $table = "users";
+    protected $table = "wechats";
 
-    function video(){
-        return $this->hasMany(Video::class,'user_id');
+    function video()
+    {
+        return $this->hasMany(Video::class, 'wechat_id');
     }
 }

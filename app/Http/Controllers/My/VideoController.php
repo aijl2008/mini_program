@@ -30,7 +30,8 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function create(){
+    function create()
+    {
         return view('my.videos.create');
     }
 
@@ -53,7 +54,7 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        return view("my.videos.show")->with('row',$video);
+        return view("my.videos.show")->with('row', $video);
     }
 
     /**

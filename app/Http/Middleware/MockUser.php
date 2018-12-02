@@ -24,7 +24,7 @@ class MockUser
                 'avatar' => '',
                 'email' => null,
                 'original' => [],
-                'provider' => 'WeChat',]
+                'provider' => 'Wechat',]
         );
         session(['wechat.oauth_user.default' => $user]);
         return $next($request);

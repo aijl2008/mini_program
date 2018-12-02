@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
+    public $timestamps = true;
     protected $fillable = [
-        "user_id" ,
-        "title" ,
-        "url" ,"cover_url","file_id",
+        "wechat_id",
+        "title",
+        "url", "cover_url", "file_id",
         "uploaded_at",
         "played_number",
         "liked_number",
         "shared_wechat_number",
         "shared_moment_number",
         "visibility",
+        "classification_id",
         "status"
     ];
-
-    public $timestamps =true;
 }

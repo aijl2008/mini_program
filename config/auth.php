@@ -38,12 +38,12 @@ return [
     'guards' => [
         'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admin',
         ],
 
         'api' => [
             'driver' => 'passport',
-            'provider' => 'users',
+            'provider' => 'api',
         ],
 
         'wechat' => [
@@ -70,20 +70,21 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'api' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\WeChat::class,
         ],
 
         'wechat' => [
             'driver' => 'eloquent',
             'model' => App\Models\WeChat::class,
-        ],
+        ]
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

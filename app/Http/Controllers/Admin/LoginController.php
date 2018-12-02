@@ -28,16 +28,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
-
-    protected function redirectTo()
-    {
-        return route('admin.home');
-    }
-
     public function showLoginForm()
     {
         return view('admin.login');
@@ -48,5 +38,15 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
         return redirect()->to(route('admin.login.show'));
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    protected function redirectTo()
+    {
+        return route('admin.home');
     }
 }

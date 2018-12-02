@@ -36,18 +36,18 @@
                 <div class="col-md-6 col-sm-6">
                     <a href="/"><img class="img-rounded" style="width: 50px"
                                      src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM4shq9TN9chaL4OOXMW3lHyD6BnAgo5rPofs2PdIIKPdA/0"></a>
-                    <strong style="font-size: 26px">乡土味视频</strong>
+                    <strong style="font-size: 26px">乡土味视频{!! $auth !!}</strong>
                 </div>
                 @if ($user)
                     <div class="col-md-6 col-sm-6">
                         <ul class="list-inline top-link link">
-                            @if ($auth == 'user')
+                            @if ($auth == 'wechat')
                                 <li><a href="{{ route('my.home') }}"><i class="fa fa-home"></i> 首页</a></li>
                                 <li><a href="{{ route('my.profile.index') }}"><i class="fa fa-comments"></i> 个人中心</a>
                                 </li>
                                 <li><a href="{{ route('wechat.logout') }}"><i class="fa fa-comments"></i> 退出</a></li>
                                 <img alt="{{$user->name}}" style="width: 32px" src="{{$user->avatar}}">
-                            @elseif($auth == 'admin')
+                            @elseif($auth == 'user')
                                 <li>{{ $user->name }}</li>
                                 <li><a href="{{ route('admin.logout') }}"><i class="fa fa-comments"></i> 退出</a></li>
                             @endif</ul>
@@ -65,12 +65,12 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    @if ($auth == 'user')
+                    @if ($auth == 'wechat')
                         <li><a href="{{ route('my.home') }}"><i class="fa fa-home"></i> 首页</a></li>
                         <li><a href="{{ route('my.followed.index') }}"><i class="fa fa-user"></i> 关注</a></li>
                         <li><a href="{{ route('my.liked.index') }}"><i class="fa fa-play-circle-o"></i> 收藏</a></li>
                         <li><a href="{{ route('my.videos.create') }}"><i class="fa fa-cubes"></i> 上传视频</a></li>
-                    @elseif($auth == 'admin')
+                    @elseif($auth == 'user')
                         <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-home"></i> 用户列表 </a></li>
                         <li><a href="{{ route('admin.videos.index') }}"><i class="fa fa-user"></i> 视频列表 </a></li>
                     @endif

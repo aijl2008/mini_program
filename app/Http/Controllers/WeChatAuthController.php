@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WeChat;
+use App\Models\Wechat;
 use EasyWeChat\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +10,16 @@ use Overtrue\Socialite\AuthorizeFailedException;
 
 class WeChatAuthController extends Controller
 {
+
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
+    public function redirect()
+    {
+        return $this->oauth()->redirect();
+    }
 
     /**
      * @return \Overtrue\Socialite\Providers\WeChatProvider
@@ -26,16 +36,6 @@ class WeChatAuthController extends Controller
         ];
         $app = Factory::officialAccount($config);
         return $app->oauth;
-    }
-
-    public function showLoginForm()
-    {
-        return view('login');
-    }
-
-    public function redirect()
-    {
-        return $this->oauth()->redirect();
     }
 
     public function callback(Request $request)
@@ -57,9 +57,9 @@ class WeChatAuthController extends Controller
             if (!array_key_exists('openid', $wechat)) {
                 abort(505, '微信接口返回的值中找不到openid');
             }
-            $user = WeChat::query()->where('union_id', $wechat['unionid'] ?: $wechat['openid'])->first();
+            $user = Wechat::query()->where('union_id', $wechat['unionid'] ?: $wechat['openid'])->first();
             if (!$user) {
-                $user = new WeChat();
+                $user = new Wechat();
                 $user->open_id = config('wechat.open_platform.default.app_id') . '|' . $wechat['openid'];
                 $user->union_id = $wechat['unionid'];
                 $user->nickname = $wechat['nickname'];

@@ -21,11 +21,12 @@ class ProfileController extends Controller
         return view("my.profile.index");
     }
 
-    public function upload(Request $request){
-        if ($request->hasFile('upload_avatar')){
-            if (($file = $request->file('upload_avatar'))->isValid()){
-                $path = $file->store('images',['disk'=>'public']);
-                if($path){
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('upload_avatar')) {
+            if (($file = $request->file('upload_avatar'))->isValid()) {
+                $path = $file->store('images', ['disk' => 'public']);
+                if ($path) {
                     return Helper::success(
                         [
                             "url" => Storage::disk('public')->url($path),
@@ -33,11 +34,11 @@ class ProfileController extends Controller
                         ]
                     );
                 }
-                return Helper::error(-1,"上传失败");
+                return Helper::error(-1, "上传失败");
             }
-            return Helper::error(-1,"无效的上传文件");
+            return Helper::error(-1, "无效的上传文件");
         }
-        return Helper::error(-1,"请提供上传文件");
+        return Helper::error(-1, "请提供上传文件");
     }
 
 }

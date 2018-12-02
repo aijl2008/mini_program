@@ -37,17 +37,17 @@ class Client
         $this->client = new \GuzzleHttp\Client();
     }
 
+    static public function __callStatic($method, $args)
+    {
+        return (self::getInstance())->client->__call($method, $args);
+    }
+
     static function getInstance()
     {
         if (!self::$instance) {
             self::$instance = new self();
         }
         return self::$instance;
-    }
-
-    static public function __callStatic($method, $args)
-    {
-        return (self::getInstance())->client->__call($method, $args);
     }
 
     static function getJson($url, $option = [])

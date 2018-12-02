@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Helper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VideoRequest extends FormRequest
@@ -26,7 +25,8 @@ class VideoRequest extends FormRequest
     {
         return [
             "title:required",
-            "url" => "required|unique:videos",
+            //"url" => "required|unique:videos",
+            "url" => "required",
         ];
     }
 
@@ -44,8 +44,10 @@ class VideoRequest extends FormRequest
     {
         $data = [];
         foreach ([
-                     "user_id" => "int",
-                     "title" => "string","cover_url" => "string","file_id" => "string",
+                     "wechat_id" => "int",
+                     "title" => "string",
+                     "cover_url" => "string",
+                     "file_id" => "string",
                      "url" => "string",
                      "uploaded_at" => "int",
                      "played_number" => "int",
@@ -53,6 +55,7 @@ class VideoRequest extends FormRequest
                      "shared_wechat_number" => "int",
                      "shared_moment_number" => "int",
                      "visibility" => "int",
+                     "classification_id" => "int",
                      "status" => "int"
                  ] as $field => $type) {
             $value = $this->input($field);
@@ -78,14 +81,16 @@ class VideoRequest extends FormRequest
         }
 
         foreach ([
-                     "user_id" => Helper::uid(),
                      "uploaded_at" => date("Y-m-d H:i:s"),
                      "played_number" => 0,
-                     "liked_number" =>0,
+                     "liked_number" => 0,
                      "shared_wechat_number" => 0,
                      "shared_moment_number" => 0,
                      "visibility" => 1,
-                     "status" => 1
+                     "status" => 1,
+                     "cover_url" => "",
+                     "file_id" => 0,
+                     "classification_id" => 0
                  ] as $field => $value) {
             if (!key_exists($field, $data)) {
                 $data[$field] = $value;

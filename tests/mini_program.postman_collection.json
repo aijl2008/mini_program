@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "mini_program",
-		"_postman_id": "41a2cd72-6a65-150c-5923-1fa6bc1f9acf",
+		"_postman_id": "9ce1ef51-7ff4-f4bc-4755-c35000719aee",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,19 +9,30 @@
 		{
 			"name": "全部用户",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/users",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/users",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"users"
@@ -32,21 +43,98 @@
 			"response": []
 		},
 		{
-			"name": "我的视频",
+			"name": "全部的视频",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/videos",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/videos",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
+					"path": [
+						"api",
+						"videos"
+					]
+				},
+				"description": "全部的视频"
+			},
+			"response": []
+		},
+		{
+			"name": "全部的视频分类",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://api.xiangtu.net.cn/api/classifications",
+					"protocol": "https",
+					"host": [
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
+					],
+					"path": [
+						"api",
+						"classifications"
+					]
+				},
+				"description": "全部的视频分类"
+			},
+			"response": []
+		},
+		{
+			"name": "我的视频",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://api.xiangtu.net.cn/api/my/videos",
+					"protocol": "https",
+					"host": [
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
+					],
 					"path": [
 						"api",
 						"my",
@@ -65,6 +153,10 @@
 					{
 						"key": "Accept",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
 					}
 				],
 				"body": {
@@ -73,27 +165,48 @@
 						{
 							"key": "title",
 							"value": "The HongKong-Zhuhai-Macao Bridge is open!",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "url",
-							"value": "5285890783150096760",
+							"value": "http://1258021496.vod2.myqcloud.com/1461fbc8vodcq1258021496/ca3c50af5285890783355351445/l95Nft1WsUwA.mp4",
+							"type": "text"
+						},
+						{
+							"key": "cover_url",
+							"value": "https://xiangtu-1258107170.cos.ap-beijing.myqcloud.com/images/1543747521713.jpg",
 							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "file_id",
+							"value": "1258021496",
+							"description": "腾讯点播文件的编号",
+							"type": "text"
+						},
+						{
+							"key": "visibility",
+							"value": "1",
+							"description": "可见范围",
+							"type": "text"
+						},
+						{
+							"key": "classification_id",
+							"value": "1",
+							"description": "分类编号",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/videos",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/my/videos",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"my",
@@ -105,23 +218,80 @@
 			"response": []
 		},
 		{
-			"name": "创建用户",
+			"name": "我喜欢的视频",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": ""
-				},
-				"description": ""
+					"raw": "https://api.xiangtu.net.cn/api/my/liked",
+					"protocol": "https",
+					"host": [
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
+					],
+					"path": [
+						"api",
+						"my",
+						"liked"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "创建用户",
+			"name": "我关注的人",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://api.xiangtu.net.cn/api/my/followed",
+					"protocol": "https",
+					"host": [
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
+					],
+					"path": [
+						"api",
+						"my",
+						"followed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "关注",
 			"request": {
 				"method": "POST",
 				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
 					{
 						"key": "Accept",
 						"value": "application/json"
@@ -131,141 +301,27 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "id",
-							"value": "8",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "name",
-							"value": "Jerry",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "mobile",
-							"value": "10000000000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "awz@awz.cn",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "avatar",
-							"value": "''''''",
-							"description": "",
+							"key": "wechat_id",
+							"value": "7",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/users",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/my/followed",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
 						"api",
-						"users"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "我喜欢的视频",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/liked",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
-					"path": [
-						"api",
-						"my",
-						"liked"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "我关注的人",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/followed",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
 					"path": [
 						"api",
 						"my",
 						"followed"
 					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "关注",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "user_id",
-							"value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/followed",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"my",
-						"followed"
-					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -273,37 +329,42 @@
 			"name": "关注取消",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "user_id",
+							"key": "wechat_id",
 							"value": "",
-							"description": "",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/followed/bbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/my/followed/7",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"my",
 						"followed",
-						"bbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+						"7"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -311,35 +372,41 @@
 			"name": "喜欢",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "formdata",
 					"formdata": [
 						{
 							"key": "video_id",
 							"value": "5",
-							"description": "",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/liked",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/my/liked",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"my",
 						"liked"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -347,23 +414,91 @@
 			"name": "喜欢取消",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/my/liked/5",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/my/liked/5",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"my",
 						"liked",
 						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "小程序获取token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d15e37b6-ba56-4c3b-b38a-464d92f3b332",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData =JSON.parse(responseBody);",
+							"if (jsonData.data.token.accessToken){",
+							"    postman.setEnvironmentVariable(\"token\",jsonData.data.token.accessToken);",
+							"}",
+							"else{",
+							"    postman.setEnvironmentVariable(\"token\",null);",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "code",
+							"value": "0616ydOV0rHpV12YTxPV01wbOV06ydO-",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.xiangtu.net.cn/api/mini_program/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
+					],
+					"path": [
+						"api",
+						"mini_program",
+						"token"
 					]
 				},
 				"description": ""
@@ -371,27 +506,36 @@
 			"response": []
 		},
 		{
-			"name": "全部的视频",
+			"name": "小程序获取token验证",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/videos",
-					"protocol": "http",
+					"raw": "https://api.xiangtu.net.cn/api/mini_program/user",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"api",
+						"xiangtu",
+						"net",
+						"cn"
 					],
-					"port": "8000",
 					"path": [
 						"api",
-						"videos"
+						"mini_program",
+						"user"
 					]
 				},
-				"description": "全部的视频"
+				"description": ""
 			},
 			"response": []
 		}

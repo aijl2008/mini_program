@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Helper;
 use App\Http\Controllers\Controller;
-use App\Models\WeChat;
+use App\Models\Wechat;
 
-class UserController extends Controller
+class WeChatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return Helper::success(WeChat::query()
+        return Helper::success(Wechat::query()
             ->orderBy('id', 'desc')
             ->paginate(20));
     }

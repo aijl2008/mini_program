@@ -130,7 +130,7 @@
                             data: $("#form").serialize(),
                             dataType: 'json',
                             success: function (res) {
-                                if (res && res.code && res.code == 0){
+                                if (res && res.code == 0){
                                     alert("上传成功");
                                     window.location.href = "{{route('my.videos.index')}}";
                                 }

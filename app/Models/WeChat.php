@@ -6,9 +6,24 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class WeChat extends Authenticatable
+class Wechat extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    protected $table = 'wechat';
+    protected $table = 'wechats';
+
+    function liked()
+    {
+        return $this->belongsToMany(Video::class)->withTimestamps();
+    }
+
+    function followed()
+    {
+        return $this->belongsToMany(Followed::class)->withTimestamps();
+    }
+
+    function video()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

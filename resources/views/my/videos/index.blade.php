@@ -37,9 +37,7 @@
                     url: '/api/my/videos?page=' + page,
                     type: "get",
                     dataType: "json",
-                    beforeSend: function (xhr) {
 
-                    },
                     success: function (res) {
                         var videos = new Array();
                         $.each(res.data.data, function (idx, item) {
@@ -60,8 +58,11 @@
                         console.log(videos.join());
                         $('.main-vid').append(videos.join());
                     },
-                    error: function (res, err) {
-                        alert('加载失败:' + err);
+                    error: function (res, err, msg) {
+                        if (res.status == 401) {
+                            alert('加载失败:请重新登录,' + msg);
+                        }
+
                     }
                 }
             );

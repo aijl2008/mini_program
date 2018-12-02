@@ -17,7 +17,7 @@ class VideoController extends Controller
     public function index(Request $request)
     {
         return Helper::success(Video::query()
-            ->where('user_id', $request->user()->id)
+            ->where('wechat_id', $request->user()->id)
             ->orderBy('id', 'desc')
             ->paginate(20));
     }
@@ -30,7 +30,8 @@ class VideoController extends Controller
     public function store(VideoRequest $request)
     {
         $video = (new Video($request->all()));
-        $video->save();
+        $request->user('api')->video()->save($video);
+        //$video->save();
         return Helper::success($video->toArray());
     }
 

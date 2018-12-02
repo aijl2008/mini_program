@@ -9,25 +9,14 @@
 namespace App\Http\Controllers\My;
 
 
-use App\Helper;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class FollowController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('my.followed.index')->with(
-            'rows',
-            User::query()->find(Helper::uid())
-                ->followed()
-                ->with(
-                    [
-                        'video' => function (HasMany $query) {
-                            return $query->orderBy('id', 'desc')->take(10);
-                        }
-                    ]
-                ));
+        return view('my.followed.index');
     }
 }
