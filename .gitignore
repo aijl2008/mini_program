@@ -3,16 +3,10 @@
 /public/storage
 /storage
 /vendor
-/.idea
-/.vscode
-/nbproject
-/.vagrant
+.idea
+.phpunit.result.cache
+.DS_Store
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-<<<<<<< Updated upstream
-.DS_Store
-=======
->>>>>>> Stashed changes
-.phpunit.result.cache
