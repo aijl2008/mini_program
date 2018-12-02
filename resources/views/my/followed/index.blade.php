@@ -2,7 +2,7 @@
 @section('content')
     <div id="page-content" class="index-page">
         <div class="container">
-            
+
         </div>
     </div>
 @endsection
