@@ -1,6 +1,6 @@
 {
 	"info": {
-		"name": "mini_program",
+		"name": "www.xiangtu.net.cn",
 		"_postman_id": "9ce1ef51-7ff4-f4bc-4755-c35000719aee",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -25,7 +25,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/users",
+					"raw": "https://www.xiangtu.net.cn/api/users",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -58,7 +58,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/videos",
+					"raw": "https://www.xiangtu.net.cn/api/videos",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -91,7 +91,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/classifications",
+					"raw": "https://www.xiangtu.net.cn/api/classifications",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -127,7 +127,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/videos",
+					"raw": "https://www.xiangtu.net.cn/api/my/videos",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -199,7 +199,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/videos",
+					"raw": "https://www.xiangtu.net.cn/api/my/videos",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -233,7 +233,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/liked",
+					"raw": "https://www.xiangtu.net.cn/api/my/liked",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -266,7 +266,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/followed",
+					"raw": "https://www.xiangtu.net.cn/api/my/followed",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -308,7 +308,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/followed",
+					"raw": "https://www.xiangtu.net.cn/api/my/followed",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -350,7 +350,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/followed/7",
+					"raw": "https://www.xiangtu.net.cn/api/my/followed/7",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -393,7 +393,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/liked",
+					"raw": "https://www.xiangtu.net.cn/api/my/liked",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -426,7 +426,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/my/liked/5",
+					"raw": "https://www.xiangtu.net.cn/api/my/liked/5",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -487,7 +487,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/mini_program/token",
+					"raw": "https://www.xiangtu.net.cn/api/mini_program/token",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -521,7 +521,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://api.xiangtu.net.cn/api/mini_program/user",
+					"raw": "https://www.xiangtu.net.cn/api/mini_program/user",
 					"protocol": "https",
 					"host": [
 						"api",
