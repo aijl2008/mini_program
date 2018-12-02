@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Overtrue\Socialite\AuthorizeFailedException;
 
-class WeChatAuthController extends Controller
+class WechatAuthController extends Controller
 {
 
     public function showLoginForm()
