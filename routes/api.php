@@ -5,6 +5,11 @@
  */
 Route::any('mini_program/token', 'Api\MiniProgramController@token')->name('api.mini_program.token');
 
+/**
+ * 全部视频
+ */
+Route::get('videos', 'Api\VideoController@index')->name('api.videos.index');
+
 Route::group(
     [
         'middleware' => 'auth:api',
@@ -34,10 +39,6 @@ Route::group(
             'only' => ['index']
         ]);
 
-        /**
-         * 全部视频
-         */
-        Route::resource('videos', 'VideoController');
 
         /**
          * 全部用户

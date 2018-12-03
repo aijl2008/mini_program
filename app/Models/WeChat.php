@@ -26,4 +26,16 @@ class Wechat extends Authenticatable
     {
         return $this->hasMany(Video::class);
     }
+
+    function updateRememberToken(){
+
+    }
+
+    function getStatusOption()
+    {
+        return [
+            1 => '正常',
+            0 => '不可用',
+        ];
+    }
 }

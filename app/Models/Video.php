@@ -20,4 +20,11 @@ class Video extends Model
         "classification_id",
         "status"
     ];
+    function getStatusOption()
+    {
+        return [
+            1 => '正常',
+            0 => '不可用',
+        ];
+    }
 }

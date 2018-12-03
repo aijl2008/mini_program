@@ -2,7 +2,7 @@
 /**
  * 首页
  */
-Route::get("/", "IndexController@index");
+Route::get("/", "IndexController@index")->name('home');
 Route::get("/vue", "VueController@index");
 
 
