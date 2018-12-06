@@ -14,6 +14,6 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        return view("my.videos.show")->with('row', $video);
+        return view("videos.show")->with('row', $video);
     }
 }

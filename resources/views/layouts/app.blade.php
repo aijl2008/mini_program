@@ -45,8 +45,8 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <ul class="list-inline top-link link">
+                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
                         @if ($auth == 'wechat')
-                            <li><a href="{{ route('my.home') }}"><i class="fa fa-home"></i>首页</a></li>
                             <li><a href="{{ route('my.followed.index') }}"><i class="fa fa-user"></i>关注</a></li>
                             <li><a href="{{ route('my.liked.index') }}"><i class="fa fa-play-circle-o"></i>收藏</a>
                             </li>
@@ -77,10 +77,9 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>全部</a></li>
+                    <li><a href="{{ route('home') }}">全部</a></li>
                     @foreach($classifications as $classification)
-                        <li><a href="{{ route('home',['classification'=>$classification->id]) }}"><i
-                                        class="fa fa-home"></i>{{$classification->name}}</a></li>
+                        <li><a href="{{ route('home',['classification'=>$classification->id]) }}">{{$classification->name}}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -88,7 +87,7 @@
     </nav>
 
 </header>
-<div class="header-slide">
+<div>
     @yield('content')
 </div>
 <footer>
