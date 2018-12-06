@@ -4,6 +4,7 @@
  */
 Route::get("/", "IndexController@index")->name('home');
 Route::get("/vue", "VueController@index");
+Route::get("/videos/{video}", "VideoController@show")->name('video.show');
 
 
 /**
@@ -112,4 +113,4 @@ Route::group(
 /**
  * 公众号消息接口
  */
-Route::any('/wechat', 'WechatServerController@serve')->name('wechat.serve');
+//Route::any('/wechat', 'WechatServerController@serve')->name('wechat.serve');

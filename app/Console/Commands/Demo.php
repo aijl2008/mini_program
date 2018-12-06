@@ -48,6 +48,9 @@ class Demo extends Command
         $avatar = 0;
         $faker = Faker::create('zh_CN');
         for ($i = 0; $i < 100; $i++) {
+            if ($avatar>=100){
+                $avatar = 0;
+            }
             $wechat = new Wechat(
                 [
                     "open_id" => config('wechat.mini_program.default.app_id') . '|' . $faker->regexify('[0-9A-Z]{32}'),//18+1+42
@@ -64,11 +67,14 @@ class Demo extends Command
             $wechat->save();
 
             for ($n = 0; $n < mt_rand(20, 99); $n++) {
+                if ($cover>=30){
+                    $cover = 0;
+                }
                 $video = new Video(
                     [
                         "title" => $faker->text,
                         "url" => $faker->imageUrl(),
-                        "cover_url" => "cover/" . ++$cover . ".jpg",
+                        "cover_url" => "/cover/" . ++$cover . ".jpg",
                         "file_id" => $faker->regexify('[1-9][0-9]{15}'),
                         "uploaded_at" => $faker->dateTime,
                         "classification_id" => $faker->numberBetween(10000, 99999),

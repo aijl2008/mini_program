@@ -27,4 +27,8 @@ class Video extends Model
             0 => '不可用',
         ];
     }
+
+    function wechat(){
+        return $this->belongsTo(Wechat::class);
+    }
 }

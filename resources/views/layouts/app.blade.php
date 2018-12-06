@@ -12,6 +12,7 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
     <script src="/jquery/jquery.min.js"></script>
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
     <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
 
@@ -90,6 +91,25 @@
 <div class="header-slide">
     @yield('content')
 </div>
-
+<footer>
+    <div class="bottom-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 copyright">
+                    <span>Copyright &copy; 2019.言诺兰科技 备案编号：冀ICP备18036913号</span>
+                </div>
+                <div class="col-md-6 col-sm-6 link">
+                    <div class="menu-footer-menu-container">
+                        <ul id="menu-footer-menu" class="menu list-inline">
+                            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                            <li><a href="#"><i class="fa fa-comments"></i> Contact</a></li>
+                            <li><a href="#"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

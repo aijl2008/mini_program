@@ -5,6 +5,7 @@
     <div id="page-content" class="index-page">
         <div class="container">
             <div class="row video_list">
+
             </div>
         </div>
     </div>
@@ -28,8 +29,8 @@
                             var template = '<div class="col-md-6">';
                             template += '<div class="zoom-container">';
                             template += '<div class="zoom-caption">';
-                            template += '<span>' + item.id + '</span>';
-                            template += '<a href="/my/videos/' + item.id + '">';
+                            template += '<span> By' + item.wechat.nickname + '</span>';
+                            template += '<a href="/videos/' + item.id + '">';
                             template += '<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>';
                             template += '</a>';
                             template += '<p>' + item.title + '</p>';
@@ -41,7 +42,11 @@
                                 template += '<img src="/images/default_cover.jpg" />';
                             }
                             template += '</div>';
-                            template += '<h3 class="vid-name"><a href="#">Video\'s Name</a></h3>';
+
+                            template += '<div class="info" style="margin: 10px 0px">';
+                            template += '<span><i class="fa fa-calendar"></i>' + item.updated_at + '</span>';
+                            template += '<span><i class="fa fa-heart"></i>' + item.liked_number + '</span>';
+                            template += '</div>';
                             template += '</div>';
                             videos.push(template);
                         });

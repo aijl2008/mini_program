@@ -15,6 +15,7 @@ class VideoController extends Controller
     public function index()
     {
         return Helper::success(Video::query()
+            ->with('wechat')
             ->orderBy('id', 'desc')
             ->paginate(20));
     }
