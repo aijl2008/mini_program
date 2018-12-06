@@ -12,6 +12,19 @@ class Wechat extends Authenticatable
 
     protected $table = 'wechats';
 
+    protected $fillable = [
+        "open_id",
+        "union_id",
+        "avatar",
+        "nickname",
+        "sex",
+        "country",
+        "province",
+        "city",
+        "status"
+    ];
+
+
     function liked()
     {
         return $this->belongsToMany(Video::class)->withTimestamps();
@@ -27,7 +40,8 @@ class Wechat extends Authenticatable
         return $this->hasMany(Video::class);
     }
 
-    function updateRememberToken(){
+    function updateRememberToken()
+    {
 
     }
 
@@ -38,4 +52,6 @@ class Wechat extends Authenticatable
             0 => '不可用',
         ];
     }
+
+
 }

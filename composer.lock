@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3371cae222624c88b856df8982c6d406",
+    "content-hash": "85c4e87cae999dd52ae4e96ffcb728b9",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -578,6 +578,105 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2017-06-27T22:17:23+00:00"
+        },
+        {
+            "name": "guzzle/guzzle",
+            "version": "v3.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": ">=2.1"
+            },
+            "replace": {
+                "guzzle/batch": "self.version",
+                "guzzle/cache": "self.version",
+                "guzzle/common": "self.version",
+                "guzzle/http": "self.version",
+                "guzzle/inflection": "self.version",
+                "guzzle/iterator": "self.version",
+                "guzzle/log": "self.version",
+                "guzzle/parser": "self.version",
+                "guzzle/plugin": "self.version",
+                "guzzle/plugin-async": "self.version",
+                "guzzle/plugin-backoff": "self.version",
+                "guzzle/plugin-cache": "self.version",
+                "guzzle/plugin-cookie": "self.version",
+                "guzzle/plugin-curlauth": "self.version",
+                "guzzle/plugin-error-response": "self.version",
+                "guzzle/plugin-history": "self.version",
+                "guzzle/plugin-log": "self.version",
+                "guzzle/plugin-md5": "self.version",
+                "guzzle/plugin-mock": "self.version",
+                "guzzle/plugin-oauth": "self.version",
+                "guzzle/service": "self.version",
+                "guzzle/stream": "self.version"
+            },
+            "require-dev": {
+                "doctrine/cache": "*",
+                "monolog/monolog": "1.*",
+                "phpunit/phpunit": "3.7.*",
+                "psr/log": "1.0.*",
+                "symfony/class-loader": "*",
+                "zendframework/zend-cache": "<2.3",
+                "zendframework/zend-log": "<2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Guzzle": "src/",
+                    "Guzzle\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Guzzle Community",
+                    "homepage": "https://github.com/guzzle/guzzle/contributors"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "abandoned": "guzzlehttp/guzzle",
+            "time": "2014-01-28T22:29:15+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2475,6 +2574,89 @@
             "time": "2018-10-13T15:16:03+00:00"
         },
         {
+            "name": "qcloud/cos-sdk-v5",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentyun/cos-php-sdk-v5.git",
+                "reference": "889be64dc70bace3722df3b44604ab510e64ea48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentyun/cos-php-sdk-v5/zipball/889be64dc70bace3722df3b44604ab510e64ea48",
+                "reference": "889be64dc70bace3722df3b44604ab510e64ea48",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzle/guzzle": "~3.7",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Qcloud\\Cos\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "lewzylu"
+                }
+            ],
+            "description": "COS SDK for PHP",
+            "time": "2017-09-28T13:25:15+00:00"
+        },
+        {
+            "name": "qcloud/vod-sdk-v5",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentyun/vod-php-sdk-v5.git",
+                "reference": "a4c1df95e6d07b37b474dc4a0d25cbe7f02d37a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentyun/vod-php-sdk-v5/zipball/a4c1df95e6d07b37b474dc4a0d25cbe7f02d37a9",
+                "reference": "a4c1df95e6d07b37b474dc4a0d25cbe7f02d37a9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "qcloud/cos-sdk-v5": "v1.1.1",
+                "tencentyun-api/qcloudapi-sdk-php": "v2.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vod\\": "src/Vod/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xujianguo",
+                    "email": "450846733@qq.com"
+                }
+            ],
+            "description": "VOD SDK For PHP",
+            "time": "2018-04-14T11:35:29+00:00"
+        },
+        {
             "name": "ramsey/uuid",
             "version": "3.8.0",
             "source": {
@@ -3774,6 +3956,48 @@
             "description": "TencentCloudApi php sdk",
             "homepage": "https://github.com/TencentCloud/tencentcloud-sdk-php",
             "time": "2018-11-15T08:01:24+00:00"
+        },
+        {
+            "name": "tencentyun-api/qcloudapi-sdk-php",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/QcloudApi/qcloudapi-sdk-php.git",
+                "reference": "e6c26d7d2bd9e52f68992d1c0fc78475bab2502f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/QcloudApi/qcloudapi-sdk-php/zipball/e6c26d7d2bd9e52f68992d1c0fc78475bab2502f",
+                "reference": "e6c26d7d2bd9e52f68992d1c0fc78475bab2502f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/QcloudApi/QcloudApi.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "php sdk for qcloudapi",
+            "homepage": "http://www.qcloud.com/",
+            "keywords": [
+                "qcloud",
+                "sdk",
+                "tencentyun"
+            ],
+            "time": "2017-09-11T02:46:11+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
