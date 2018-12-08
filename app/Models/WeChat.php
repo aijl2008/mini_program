@@ -24,6 +24,11 @@ class Wechat extends Authenticatable
         "status"
     ];
 
+    function getAvatarAttribute()
+    {
+        return str_replace('http://', 'https://', $this->attributes['avatar']);
+    }
+
 
     function liked()
     {

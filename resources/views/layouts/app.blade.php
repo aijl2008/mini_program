@@ -12,6 +12,7 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
     <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
     <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
@@ -28,7 +29,7 @@
     </script>
     <style>
         .vertical {
-            vertical-align:middle;
+            vertical-align: middle;
         }
     </style>
     @yield('js')
@@ -38,31 +39,32 @@
     <nav id="top">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6 vertical" style="vertical-align:middle;">
-                    <a href="/"><img class="img-rounded" style="width: 50px"
-                                     src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM4shq9TN9chaL4OOXMW3lHyD6BnAgo5rPofs2PdIIKPdA/0"></a>
-                    <strong style="font-size: 26px">乡土味视频</strong>
+                <div class="col-md-6 col-sm-6" style=" padding-bottom: 10px">
+                    <a href="/"><img class="img-rounded" style="width: 50px;"
+                                     src="/images/logo.png"></a>
+                    <strong style="font-size: 26px; padding-top: 24px; padding-left: 10px">视频</strong>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <ul class="list-inline top-link link">
-                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+
                         @if ($auth == 'wechat')
                             <li><a href="{{ route('my.followed.index') }}"><i class="fa fa-user"></i>关注</a></li>
                             <li><a href="{{ route('my.liked.index') }}"><i class="fa fa-play-circle-o"></i>收藏</a>
                             </li>
-                            <li><a href="{{ route('my.profile.index') }}"><i class="fa fa-comments"></i>个人中心</a>
-                            <li><a href="{{ route('my.videos.create') }}"><i class="fa fa-cubes"></i>上传视频</a></li>
+                            <li><a href="{{ route('my.videos.create') }}"><i class="fa fa-cloud-upload"></i>上传</a></li>
                             </li>
-                            <li><a href="{{ route('wechat.logout') }}"><i class="fa fa-comments"></i>退出</a></li>
-                            <img alt="{{$user->name}}" style="width: 32px" src="{{$user->avatar}}">
+                            <li><a href="{{ route('wechat.logout') }}"><i class="fa fa-sign-out"></i>退出</a></li>
+                            <a href="{{route('my.videos.index')}}"><img alt="{{$user->name}}" style="width: 32px"
+                                                                        src="{{$user->avatar}}"></a>
                         @elseif($auth == 'user')
+                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
                             <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-home"></i>用户列表 </a></li>
-                            <li><a href="{{ route('admin.videos.index') }}"><i class="fa fa-user"></i>视频列表 </a>
-                            </li>
+                            <li><a href="{{ route('admin.videos.index') }}"><i class="fa fa-user"></i>视频列表 </a></li>
                             <li>{{ $user->name }}</li>
-                            <li><a href="{{ route('admin.logout') }}"><i class="fa fa-comments"></i>退出</a></li>
+                            <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out"></i>退出</a></li>
                         @elseif($auth == 'guest')
-                            <li><a href="{{ route('wechat.login.show') }}"><i class="fa fa-comments"></i>登录</a></li>
+                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                            <li><a href="{{ route('wechat.login.redirect') }}"><i class="fa fa-comments"></i>登录</a></li>
                         @endif
                     </ul>
                 </div>
@@ -71,15 +73,18 @@
     </nav>
     <nav id="menu" class="navbar">
         <div class="container">
-            <div class="navbar-header"><span id="heading" class="visible-xs">Categories</span>
+            <div class="navbar-header"><span id="heading" class="visible-xs"></span>
                 <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
                         data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('home') }}">全部</a></li>
+                    <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> 全部</a></li>
                     @foreach($classifications as $classification)
-                        <li><a href="{{ route('home',['classification'=>$classification->id]) }}">{{$classification->name}}</a></li>
+                        <li>
+                            <a href="{{ route('home',['classification'=>$classification->id]) }}"><i
+                                        class="fa {{$classification->icon}}"></i> {{$classification->name}}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -99,11 +104,6 @@
                 </div>
                 <div class="col-md-6 col-sm-6 link">
                     <div class="menu-footer-menu-container">
-                        <ul id="menu-footer-menu" class="menu list-inline">
-                            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-                            <li><a href="#"><i class="fa fa-comments"></i> Contact</a></li>
-                            <li><a href="#"><i class="fa fa-question-circle"></i> FAQ</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
