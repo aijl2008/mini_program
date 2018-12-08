@@ -1,7 +1,5 @@
 # 接口
 
-`http://www.jq22.com/demo/jQueryvideomoban201702190044/`
-
 ## 视频列表
 
 ### 接口地址 
