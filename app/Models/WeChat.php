@@ -58,5 +58,9 @@ class Wechat extends Authenticatable
         ];
     }
 
+    function setRememberToken()
+    {
+
+    }
 
 }
