@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Classification;
 use App\Models\Video;
 use App\Models\Wechat;
 use Faker\Factory as Faker;
@@ -21,7 +22,7 @@ class Demo extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '填充演示数据';
 
     /**
      * Create a new command instance.
@@ -44,11 +45,80 @@ class Demo extends Command
         Wechat::query()->getConnection()->table('video_wechat')->truncate();
         Wechat::query()->truncate();
         Video::query()->truncate();
+        Classification::query()->truncate();
+
+        foreach ([
+                     [
+                         'name' => '社会',
+                         'icon' => 'fa-newspaper-o'
+                     ],
+                     [
+                         'name' => '搞笑',
+                         'icon' => 'fa-cube'
+                     ],
+                     [
+                         'name' => '生活',
+                         'icon' => 'fa-glass'
+                     ],
+                     [
+                         'name' => '影视',
+                         'icon' => 'fa-film'
+                     ],
+                     [
+                         'name' => '娱乐',
+                         'icon' => 'fa-coffee'
+                     ],
+                     [
+                         'name' => '音乐',
+                         'icon' => 'fa-music'
+                     ],
+                     [
+                         'name' => '舞蹈',
+                         'icon' => 'fa-female'
+                     ],
+                     [
+                         'name' => '游戏',
+                         'icon' => 'fa-gamepad'
+                     ]
+                     ,
+                     [
+                         'name' => '美食',
+                         'icon' => 'fa-lemon-o'
+                     ]
+                     ,
+                     [
+                         'name' => '旅行',
+                         'icon' => 'fa-plane'
+                     ]
+                     ,
+                     [
+                         'name' => '时尚',
+                         'icon' => 'fa-industry'
+                     ]
+                     ,
+                     [
+                         'name' => '科技',
+                         'icon' => 'fa-desktop'
+                     ]
+                     ,
+                     [
+                         'name' => '运动',
+                         'icon' => 'fa-futbol-o'
+                     ]
+                 ] as $item) {
+            Classification::query()->create(
+                [
+                    'name' => $item['name'],
+                    'icon' => $item['icon'],
+                    'status' => 1
+                ]
+            );
+        }
         $cover = 0;
         $avatar = 0;
         $faker = Faker::create('zh_CN');
         for ($i = 0; $i < 100; $i++) {
-            if ($avatar>=100){
+            if ($avatar >= 100) {
                 $avatar = 0;
             }
             $wechat = new Wechat(
@@ -67,7 +137,7 @@ class Demo extends Command
             $wechat->save();
 
             for ($n = 0; $n < mt_rand(20, 99); $n++) {
-                if ($cover>=30){
+                if ($cover >= 30) {
                     $cover = 0;
                 }
                 $video = new Video(
@@ -94,6 +164,7 @@ class Demo extends Command
             $wechat->followed()->saveMany(Wechat::query()->inRandomOrder()->take(mt_rand(5, 10))->get());
             $wechat->liked()->saveMany(Video::query()->inRandomOrder()->take(mt_rand(5, 10))->get());
         }
+
         $this->comment('Ok');
     }
 }

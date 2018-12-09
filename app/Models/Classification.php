@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classification extends Model
 {
+
+    protected $fillable = [
+        'name', 'icon', 'status '
+    ];
+
     function getStatusOption()
     {
         return [

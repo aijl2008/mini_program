@@ -17,10 +17,10 @@
         @foreach($rows as $row)
             <tr>
                 <td class="text-nowrap">
-                    <a title="删除" href='{{ route('admin.classification.destroy', [$row->id,'redirect'=>$redirect]) }}' class='btn-sm btn-danger delete'
+                    <a title="删除" href='{{ route('admin.classifications.destroy', [$row->id]) }}' class='btn-sm btn-danger delete'
                        data-toggle='modal' data-target='#modal-delete'><span
                                 class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                    <a title="编辑" href='{{ route('admin.classification.edit', [$row->id,'redirect'=>$redirect, 'draft_id'=>$row->draft_id?:'']) }}'
+                    <a title="编辑" href='{{ route('admin.classifications.edit', [$row->id, 'draft_id'=>$row->draft_id?:'']) }}'
                        class='btn-sm btn-warning'><span
                                 class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                 </td>
@@ -33,7 +33,6 @@
         @endforeach
         </tbody>
     </table>
-    <div class="pagination-wrapper"> {!! $rows->appends(['w' => Request::get('w')])->render() !!} </div>
 @stop
 @section('css')
 @stop

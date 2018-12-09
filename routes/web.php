@@ -23,6 +23,8 @@ Route::group(
 
         Route::get('register', 'RegisterController@showRegistrationForm')->name('register.show');
         Route::post('register', 'RegisterController@register')->name('register.do');
+
+
     }
 );
 
@@ -42,6 +44,13 @@ Route::group(
          * 首页
          */
         Route::get("/", "HomeController@index")->name('home');
+
+
+        Route::resource("/classifications", "ClassificationController", [
+            'except' => [
+                'show'
+            ]
+        ]);
         /**
          * 用户页
          */
@@ -67,8 +76,6 @@ Route::group(
  */
 Route::group(
     [
-        //'middleware' => 'mock.user'
-        //'middleware' => 'proxy.user'
         'prefix' => 'wechat',
         'as' => 'wechat.'
     ],
