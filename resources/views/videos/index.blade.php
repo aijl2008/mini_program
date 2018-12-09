@@ -5,73 +5,69 @@
     <div id="page-content" class="index-page">
         <div class="container">
             <div class="row video_list">
-
+                @foreach($rows as $row)
+                    <div class="col-md-6" id="skeleton">
+                        <div class="zoom-container">
+                            <div class="zoom-caption">
+                            <span class="tag">
+                                <a href="{{route("api.my.liked.store")}}" data-video-id="{{$row->id}}"
+                                   class="liked_number"><i
+                                            class="fa fa-heart"></i> {{$row->liked_number}} </a>
+                            </span>
+                                <a class="play" href="{{route('video.show', $row->id)}}"><i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i></a>
+                                <p class="title"> {{$row->title}} </p>
+                            </div>
+                            <img src="{{$row->cover_url?:'/images/default_cover.jpg'}}"/>
+                        </div>
+                        <div class="info" style="margin: 10px 0px">
+                            <span class="updated_at">
+                                <i class="fa fa-calendar"></i> {{$row->updated_at}}</span>
+                            <a href="javascript:void(0)" data-url="{{route("api.my.liked.store")}}"
+                               data-video-id="{{$row->id}}"
+                               class="liked_number"><i class="fa fa-heart"></i> {{$row->liked_number}} </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
+            {{$rows->appends(['classification' => $classification])->links()}}
         </div>
     </div>
 @endsection
 
 @section('js')
-
     <script type="text/javascript">
-        var page = 1;
-
-        function ls() {
-            $.ajax(
-                {
-                    url: '/api/videos?page=' + page + '&classification={{$classification}}',
-                    type: "get",
-                    dataType: "json",
-
-                    success: function (res) {
-                        var videos = new Array();
-                        $.each(res.data.data, function (idx, item) {
-                            var template = '<div class="col-md-6">';
-                            template += '<div class="zoom-container">';
-                            template += '<div class="zoom-caption">';
-                            template += '<span> By' + item.wechat.nickname + '</span>';
-                            template += '<a href="/videos/' + item.id + '">';
-                            template += '<i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>';
-                            template += '</a>';
-                            template += '<p>' + item.title + '</p>';
-                            template += '</div>';
-                            if (item.cover_url) {
-                                template += '<img src="' + item.cover_url + '"/>';
+        $(function () {
+            $(".liked_number").click(function () {
+                var _this = $(this);
+                console.log(_this.data('video-id'));
+                $.ajax(
+                    {
+                        url: _this.data('url'),
+                        type: "post",
+                        data: {
+                            video_id: _this.data('video-id')
+                        },
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.code == 0) {
+                                __alert("已喜欢");
+                                _this.html('<i class="fa fa-heart"></i>' + res.data.liked_number);
                             }
                             else {
-                                template += '<img src="/images/default_cover.jpg" />';
+                                __alert(res.msg);
                             }
-                            template += '</div>';
-
-                            template += '<div class="info" style="margin: 10px 0px">';
-                            template += '<span><i class="fa fa-calendar"></i>' + item.updated_at + '</span>';
-                            template += '<span><i class="fa fa-heart"></i>' + item.liked_number + '</span>';
-                            template += '</div>';
-                            template += '</div>';
-                            videos.push(template);
-                        });
-                        console.log(videos.length);
-                        if (videos.length > 0) {
-                            $('.video_list').append(videos.join(""));
+                        },
+                        error: function (res, err, msg) {
+                            if (res.status == 401) {
+                                __alert("请登录");
+                            }
+                            else {
+                                __alert(msg);
+                            }
                         }
-
-                    },
-                    error: function (res, err, msg) {
-                        if (res.status == 401) {
-                            alert('加载失败:请重新登录,' + msg);
-                        }
-
                     }
-                }
-            );
-        }
-
-        ls();
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) {
-                page++;
-                ls(page);
-            }
+                );
+            });
         });
     </script>
 @endsection

@@ -55,7 +55,7 @@ class Demo extends Command
                 [
                     "open_id" => config('wechat.mini_program.default.app_id') . '|' . $faker->regexify('[0-9A-Z]{32}'),//18+1+42
                     "union_id" => null,
-                    "avatar" => "http://www.xiangtu.net.cn/avatar/" . ++$avatar . 'jpg',
+                    "avatar" => "http://www.xiangtu.net.cn/avatar/" . ++$avatar . '.jpg',
                     "nickname" => $faker->name,
                     "sex" => $faker->numberBetween(0, 2),
                     "country" => $faker->country,

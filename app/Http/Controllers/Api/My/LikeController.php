@@ -41,8 +41,16 @@ class LikeController extends Controller
             return Helper::error(-1, "您已经喜欢过了");
         }
         $user->liked()->attach($video->id);
+        $video->update(
+            [
+                "liked_number" => $user->liked()->count()
+            ]
+        );
         return Helper::success(
-            ['video' => $video]
+            [
+                'video' => $video,
+                'liked_number' => $video->liked_number
+            ]
         );
     }
 

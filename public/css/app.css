@@ -1169,3 +1169,20 @@ li.tweets_avatar {
 .comment textarea {
     height: 210px
 }
+
+.zoom-caption .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video_list {
+
+}
+
+.box-header {
+    padding: 8px 15px;
+    background-color: #ffd800;
+    display: inline-block;
+    border-radius: 5px;
+}

@@ -11,18 +11,21 @@ namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
 use App\Models\Video;
+use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * @param $video
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('my.videos.index');
+        $view = view('my.videos.index');
+        $video = $request->user('wechat')->liked()->with('wechat')->orderBy('id', 'desc');
+        $view->with('rows', $video->paginate());
+        $view->with('classification', $request->input('classification', 0));
+        return $view;
     }
 
     /**

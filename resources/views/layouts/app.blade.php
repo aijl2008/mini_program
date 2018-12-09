@@ -26,6 +26,11 @@
                 xhr.setRequestHeader("Authorization", Bearer);
             }
         });
+
+        function __alert(message) {
+            $('#message-error').modal("show");
+            $('#message-error').find(".message").html(message);
+        }
     </script>
     <style>
         .vertical {
@@ -46,10 +51,9 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <ul class="list-inline top-link link">
-
                         @if ($auth == 'wechat')
                             <li><a href="{{ route('my.followed.index') }}"><i class="fa fa-user"></i>关注</a></li>
-                            <li><a href="{{ route('my.liked.index') }}"><i class="fa fa-play-circle-o"></i>收藏</a>
+                            <li><a href="{{ route('my.liked.index') }}"><i class="fa fa-play-circle-o"></i>喜欢</a>
                             </li>
                             <li><a href="{{ route('my.videos.create') }}"><i class="fa fa-cloud-upload"></i>上传</a></li>
                             </li>
@@ -100,15 +104,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 copyright">
-                    <span>Copyright &copy; 2019.言诺兰科技 备案编号：冀ICP备18036913号</span>
+                    <span>Copyright &copy; 2019.言诺兰科技</span>
                 </div>
                 <div class="col-md-6 col-sm-6 link">
-                    <div class="menu-footer-menu-container">
-                    </div>
+                    <span>工信部互联网备案编号：冀ICP备18036913号</span>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+<div id="message-error" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="alert alert-warning message" role="alert"></div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
