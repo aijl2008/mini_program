@@ -36,6 +36,24 @@
         .vertical {
             vertical-align: middle;
         }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .wrapper {
+            min-height: 100%;
+
+            /* Equal to height of footer */
+            /* But also accounting for potential margin-bottom of last child */
+            margin-bottom: -50px;
+        }
+
+        .footer,
+        .push {
+            height: 50px;
+        }
     </style>
     @yield('js')
 </head>
@@ -62,8 +80,11 @@
                                                                         src="{{$user->avatar}}"></a>
                         @elseif($auth == 'user')
                             <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-                            <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-home"></i>用户列表 </a></li>
-                            <li><a href="{{ route('admin.videos.index') }}"><i class="fa fa-user"></i>视频列表 </a></li>
+                            <li><a href="{{ route('admin.classifications.index') }}"><i class="fa fa-cube"></i>分类 </a>
+                            </li>
+                            <li><a href="{{ route('admin.videos.index') }}"><i class="fa fa-film"></i>视频 </a>
+                            </li>
+                            <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-user"></i>用户 </a></li>
                             <li>{{ $user->name }}</li>
                             <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out"></i>退出</a></li>
                         @elseif($auth == 'guest')
@@ -96,10 +117,10 @@
     </nav>
 
 </header>
-<div>
+<div class="content">
     @yield('content')
 </div>
-<footer>
+<footer style="height: 40px;">
     <div class="bottom-footer">
         <div class="container">
             <div class="row">

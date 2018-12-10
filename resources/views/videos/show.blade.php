@@ -7,7 +7,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <video poster="{{$row->cover_url}}" id="player-container-id" preload="auto" width="720" height="405" playsinline webkit-playsinline> playsinline webkit-playsinline>
+                    <video poster="{{$row->cover_url}}" id="player-container-id" preload="auto" width="720" height="405"
+                           playsinline webkit-playsinline> playsinline webkit-playsinline>
                     </video>
                     <h1 class="vid-name"><a href="#">{{$row->title}}</a></h1>
                     <div class="line"></div>

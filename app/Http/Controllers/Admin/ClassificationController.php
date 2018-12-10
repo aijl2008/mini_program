@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ClassificationRequest;
 use App\Models\Classification;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ClassificationController extends Controller
 {
@@ -18,7 +19,7 @@ class ClassificationController extends Controller
     {
         return view('admin.classifications.index')
             ->with('rows', Classification::query()->get())
-            ->with('status',(new Classification())->getStatusOption());
+            ->with('status', (new Classification())->getStatusOption());
     }
 
     /**
@@ -28,7 +29,7 @@ class ClassificationController extends Controller
      */
     function create()
     {
-        return view('admin.classifications.create');
+        return view('admin.classifications.create')->with('status', (new Classification())->getStatusOption());
     }
 
     /**
@@ -39,13 +40,12 @@ class ClassificationController extends Controller
      */
     public function store(Request $request)
     {
-        try{
+        try {
             $classification = new Classification($request->data());
             $classification->save();
-            return redirect()->to(route('admin.classification.index'))->with('message','添加成功');
-        }
-        catch (\Exception $exception){
-            return redirect()->to(route('admin.classification.index'))->with('message','添加失败');
+            return redirect()->to(route('admin.classifications.index'))->with('message', '添加成功');
+        } catch (\Exception $exception) {
+            return redirect()->to(route('admin.classifications.index'))->with('message', '添加失败');
         }
     }
 
@@ -56,7 +56,9 @@ class ClassificationController extends Controller
      */
     public function edit(Classification $classification)
     {
-        return view('admin.classifications.edit')->with('row', $classification);
+        return view('admin.classifications.edit')
+            ->with('row', $classification)
+            ->with('status', (new Classification())->getStatusOption());
     }
 
     /**
@@ -66,17 +68,16 @@ class ClassificationController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClassificationRequest $request, $id)
     {
-        try{
+        try {
             $classification = Classification::query()->findOrFail($id);
             $classification->update(
                 $request->data()
             );
-            return redirect()->to(route('admin.classification.index'))->with('message','修改成功');
-        }
-        catch (\Exception $exception){
-            return redirect()->to(route('admin.classification.index'))->with('message','修改失败');
+            return redirect()->to(route('admin.classifications.index'))->with('message', '修改成功');
+        } catch (\Exception $exception) {
+            return redirect()->to(route('admin.classifications.index'))->with('message', '修改失败');
         }
     }
 
@@ -88,13 +89,12 @@ class ClassificationController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $classification = Classification::query()->findOrFail($id);
             $classification->delete();
-            return redirect()->to(route('admin.classification.index'))->with('message','删除成功');
-        }
-        catch (\Exception $exception){
-            return redirect()->to(route('admin.classification.index'))->with('message','删除失败');
+            return redirect()->to(route('admin.classification.index'))->with('message', '删除成功');
+        } catch (\Exception $exception) {
+            return redirect()->to(route('admin.classification.index'))->with('message', '删除失败');
         }
     }
 }

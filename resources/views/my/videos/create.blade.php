@@ -7,20 +7,20 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">选择视频</label>
                     <div class="col-sm-10">
-                        <input type="text" value="" name="url" id="url">
-                        <input type="text" value="" name="file_id" id="file_id">
+                        <input type="text" value="" name="url" id="url" readonly="readonly">
+                        <input type="hidden" value="" name="file_id" id="file_id">
                         <p class="form-control-static" id="queue_videos"><a id="addVideo"
                                                                             href="javascript:void(0);"
-                                                                            class="btn btn-outline">添加视频</a></p>
+                                                                            class="btn btn-info">添加视频</a></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">选择视频封面</label>
                     <div class="col-sm-10">
-                        <input type="text" value="" name="cover_url" id="cover_url">
+                        <input type="text" value="" name="cover_url" id="cover_url" readonly="readonly">
                         <p class="form-control-static" id="queue_video_covers"><a id="addCover"
                                                                                   href="javascript:void(0);"
-                                                                                  class="btn btn-outline">添加封面</a>
+                                                                                  class="btn btn-info">添加封面</a>
                         </p>
                     </div>
                 </div>
@@ -28,6 +28,15 @@
                     <label for="inputPassword" class="col-sm-2 control-label">请输入视频名称</label>
                     <div class="col-sm-10">
                         <input type="text" name="title" id="title" required="">
+                    </div>
+                </div>
+                <div class="form-group {{ $errors->has('classification_id') ? 'has-error' : ''}}">
+                    {!! Form::label('classification_id', '分类', ['class' => 'col-md-2 control-label']) !!}
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            {!! Form::select('classification_id', (new \App\Models\Classification())->toOption()); !!}
+                        </div>
+                        {!! $errors->first('classification_id', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,13 +64,13 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <a id="uploadFile" href="javascript:void(0);" class="btn btn-outline">上传并保存</a>
+                            <a id="uploadFile" href="javascript:void(0);" class="btn btn-primary">上传并保存</a>
                         </div>
                     </div>
                 </div>
             </form>
-            <input id="addVideo-file" type="file" style="display:block;"/>
-            <input id="addCover-file" type="file" style="display:block;"/>
+            <input id="addVideo-file" type="file" style="display:none;"/>
+            <input id="addCover-file" type="file" style="display:none;"/>
         </div>
     </div>
 @endsection

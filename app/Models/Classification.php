@@ -18,4 +18,13 @@ class Classification extends Model
             0 => '不可用',
         ];
     }
+
+    function toOption()
+    {
+        $classifications = array();
+        foreach (parent::newQuery()->get() as $item) {
+            $classifications[$item->id] = $item->name;
+        }
+        return $classifications;
+    }
 }

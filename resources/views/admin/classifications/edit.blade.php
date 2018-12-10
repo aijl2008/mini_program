@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', '视频分类管理')
 
-@section('form')
+@section('content')
     @include('layouts/message')
     {!! Form::model($row, [
                                 'method' => 'PATCH',

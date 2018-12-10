@@ -40,7 +40,8 @@ class ClassificationRequest extends FormRequest
     {
         return [
             "name" => $this->input('name'),
-            "status" => $this->input('status')
+            "icon" => $this->input('icon'),
+            "status" => (int)$this->input('status')
         ];
     }
 }

@@ -10,7 +10,9 @@ class Video extends Model
     protected $fillable = [
         "wechat_id",
         "title",
-        "url", "cover_url", "file_id",
+        "url",
+        "cover_url",
+        "file_id",
         "uploaded_at",
         "played_number",
         "liked_number",
@@ -20,6 +22,7 @@ class Video extends Model
         "classification_id",
         "status"
     ];
+
     function getStatusOption()
     {
         return [
@@ -28,7 +31,8 @@ class Video extends Model
         ];
     }
 
-    function wechat(){
+    function wechat()
+    {
         return $this->belongsTo(Wechat::class);
     }
 }
