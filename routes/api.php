@@ -8,7 +8,15 @@ Route::any('mini_program/token', 'Api\MiniProgramController@token')->name('api.m
 /**
  * 全部视频
  */
-Route::get('videos', 'Api\VideoController@index')->name('api.videos.index');
+Route::resource('videos', 'Api\VideoController', [
+    'only' => ['index']
+]);
+/**
+ * 视频分类
+ */
+Route::resource('classifications', 'Api\ClassificationController', [
+    'only' => ['index']
+]);
 
 Route::group(
     [
@@ -31,13 +39,6 @@ Route::group(
          * 分享签名
          */
         Route::get("wechat/signature/share", "Wechat\SignatureController@share")->name('wechat.signature.share');
-
-        /**
-         * 视频分类
-         */
-        Route::resource('classifications', 'ClassificationController', [
-            'only' => ['index']
-        ]);
 
 
         /**
